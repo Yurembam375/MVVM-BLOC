@@ -1,14 +1,23 @@
-import 'package:bloc/bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'dart:developer';
 
+import 'package:bloc/bloc.dart';
+import 'package:blocwitmvvm/utils/enums.dart';
+import 'package:equatable/equatable.dart';
 part 'login_event.dart';
 part 'login_state.dart';
-part 'login_bloc.freezed.dart';
 
-class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc() : super(_Initial()) {
-    on<LoginEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+class LoginBloc extends Bloc<LoginEvents, LoginStates> {
+  LoginBloc() : super( LoginStates()) {
+    on<EmailChange>(_onEmailChnage);
+    on<PasswordChange>(_onPasswordChnage);
+  }
+
+  void _onEmailChnage(EmailChange event, Emitter<LoginStates> emit) {
+    log(event.email);
+    emit(state.copyWith(email: event.email));
+  }
+
+  void _onPasswordChnage(PasswordChange event, Emitter<LoginStates> emit) {
+    emit(state.copyWith(password: event.password));
   }
 }
