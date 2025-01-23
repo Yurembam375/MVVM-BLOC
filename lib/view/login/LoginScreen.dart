@@ -1,4 +1,7 @@
+
 import 'package:blocwitmvvm/bloc/bloc/login_bloc.dart';
+import 'package:blocwitmvvm/main.dart';
+import 'package:blocwitmvvm/repository/auth/login_repo.dart';
 import 'package:blocwitmvvm/view/login/widget/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,13 +19,20 @@ class _LoginscreenState extends State<Loginscreen> {
   final emailFocusNode = FocusNode();
   final passwordFocusNode = FocusNode();
 
-  final _formkey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    _loginBloc = LoginBloc();
+    _loginBloc = LoginBloc(loginRepository: getIt());
+  }
+
+  @override
+  void dispose() {
+    _loginBloc.close();
+    emailFocusNode.dispose();
+    passwordFocusNode.dispose();
+    super.dispose();
   }
 
   @override
@@ -33,25 +43,25 @@ class _LoginscreenState extends State<Loginscreen> {
       ),
       body: BlocProvider(
         create: (context) => _loginBloc,
-        child: Padding(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              EmailWidget(emailFocusNode: emailFocusNode),
-              const SizedBox(
-                height: 20,
-              ),
-              PasswordWidget(passwordFocusNode: passwordFocusNode),
-              const SizedBox(
-                height: 20,
-              ),
-              Center(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                EmailWidget(emailFocusNode: emailFocusNode),
+                const SizedBox(height: 20),
+                PasswordWidget(passwordFocusNode: passwordFocusNode),
+                const SizedBox(height: 20),
+                Center(
                   child: Loginbutton(
-                formkey: _formkey,
-              ))
-            ],
+                    formkey: _formKey, // Pass formKey to Loginbutton
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

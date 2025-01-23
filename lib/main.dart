@@ -1,9 +1,14 @@
 import 'package:blocwitmvvm/config/routes/routeName.dart';
 import 'package:blocwitmvvm/config/routes/routes.dart';
+import 'package:blocwitmvvm/repository/auth/login_http_api_repo.dart';
+import 'package:blocwitmvvm/repository/auth/login_repo.dart';
 import 'package:blocwitmvvm/view/splash/SplashScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
+GetIt getIt = GetIt.instance;
 void main() {
+  serviceLocator();
   runApp(const MyApp());
 }
 
@@ -20,4 +25,8 @@ class MyApp extends StatelessWidget {
       home: Splashscreen(),
     );
   }
+}
+
+void serviceLocator() {
+  getIt.registerLazySingleton<LoginRepo>(() => LoginHttpApiRepo());
 }

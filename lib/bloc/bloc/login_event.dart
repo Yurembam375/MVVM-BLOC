@@ -21,6 +21,6 @@ class PasswordChange extends LoginEvents {
   List<Object> get props => [password];
 }
 
-class LoginButton extends LoginEvents{
+class LoginApi extends LoginEvents{
 
 }
