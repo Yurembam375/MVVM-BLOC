@@ -1,5 +1,5 @@
 import 'package:blocwitmvvm/data/exception/appException.dart';
-import 'package:blocwitmvvm/data/service/splash_service.dart';
+import 'package:blocwitmvvm/service/splash_service.dart';
 
 import 'package:flutter/material.dart';
 

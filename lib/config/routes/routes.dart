@@ -15,11 +15,11 @@ class Routes {
         );
           case RoutesName.homeScreen:
         return MaterialPageRoute(
-          builder: (context) => const Homescreen(),
+          builder: (context) => const HomeScreen(),
         );
           case RoutesName.loginScreen:
         return MaterialPageRoute(
-          builder: (context) =>  Loginscreen(),
+          builder: (context) =>  const Loginscreen(),
         );
       default:
         return MaterialPageRoute(

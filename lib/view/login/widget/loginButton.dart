@@ -55,6 +55,7 @@
 import 'dart:developer';
 
 import 'package:blocwitmvvm/bloc/bloc/login_bloc.dart';
+import 'package:blocwitmvvm/config/routes/routeName.dart';
 import 'package:blocwitmvvm/utils/enums.dart';
 import 'package:blocwitmvvm/utils/flush_bar_helper.dart';
 import 'package:flutter/material.dart';
@@ -81,8 +82,9 @@ class Loginbutton extends StatelessWidget {
           //   SnackBar(content: Text(state.message.toString())),
           // );
         } else if (state.postApiStatus == PostApiStatus.success) {
-          FlushBarHelper.flushBarSucessMessage('Login Sucessful', context);
-          log(state.message.toString());
+          Navigator.pushNamed(context,RoutesName.homeScreen);
+          // FlushBarHelper.flushBarSucessMessage('Login Sucessful', context);
+          // log(state.message.toString());
           // ScaffoldMessenger.of(context).showSnackBar(
           //   SnackBar(content: Text(state.message.toString())),
           // );
