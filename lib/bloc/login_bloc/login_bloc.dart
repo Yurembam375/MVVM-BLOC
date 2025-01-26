@@ -1,19 +1,20 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:blocwitmvvm/main.dart';
+import 'package:blocwitmvvm/dependency_injection/locator.dart';
+
 import 'package:blocwitmvvm/repository/auth/login_repo.dart';
 import 'package:blocwitmvvm/service/session_manager/session_manager.dart';
 import 'package:blocwitmvvm/utils/enums.dart';
 import 'package:equatable/equatable.dart';
-part 'login_event.dart'; 
+part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvents, LoginStates> {
   LoginRepo loginRepository = getIt();
-  LoginBloc({required this.loginRepository}) : super(const LoginStates()) {  
+  LoginBloc({required this.loginRepository}) : super(const LoginStates()) {
     on<EmailChange>(_onEmailChnage);
-    on<PasswordChange>(_onPasswordChnage); 
+    on<PasswordChange>(_onPasswordChnage);
     on<LoginApi>(_loginApi);
   }
 
@@ -34,17 +35,15 @@ class LoginBloc extends Bloc<LoginEvents, LoginStates> {
     await loginRepository.loginApi(data).then(
       (value) async {
         if (value.error.isNotEmpty) {
-              emit(state.copyWith(
+          emit(state.copyWith(
               message: value.error.toString(),
               postApiStatus: PostApiStatus.error));
         } else {
-
           await SessionManager().saveUserInPrefence(value);
-             await SessionManager().getUserFromPreference();
-           emit(state.copyWith(
+          await SessionManager().getUserFromPreference();
+          emit(state.copyWith(
               message: 'Login sucessfull',
               postApiStatus: PostApiStatus.success));
-     
         }
       },
     ).onError(

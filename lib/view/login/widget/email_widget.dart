@@ -1,4 +1,4 @@
-import 'package:blocwitmvvm/bloc/bloc/login_bloc.dart';
+import 'package:blocwitmvvm/bloc/login_bloc/login_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

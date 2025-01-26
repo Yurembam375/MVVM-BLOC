@@ -1,7 +1,6 @@
+import 'package:blocwitmvvm/bloc/login_bloc/login_bloc.dart';
+import 'package:blocwitmvvm/dependency_injection/locator.dart';
 
-import 'package:blocwitmvvm/bloc/bloc/login_bloc.dart';
-import 'package:blocwitmvvm/main.dart';
-import 'package:blocwitmvvm/repository/auth/login_repo.dart';
 import 'package:blocwitmvvm/view/login/widget/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

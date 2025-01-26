@@ -54,7 +54,7 @@
 // }
 import 'dart:developer';
 
-import 'package:blocwitmvvm/bloc/bloc/login_bloc.dart';
+import 'package:blocwitmvvm/bloc/login_bloc/login_bloc.dart';
 import 'package:blocwitmvvm/config/routes/routeName.dart';
 import 'package:blocwitmvvm/utils/enums.dart';
 import 'package:blocwitmvvm/utils/flush_bar_helper.dart';
