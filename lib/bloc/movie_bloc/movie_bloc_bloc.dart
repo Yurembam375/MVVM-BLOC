@@ -1,7 +1,7 @@
 
 
 import 'package:bloc/bloc.dart';
-import 'package:blocwitmvvm/bloc/movie_bloc/bloc/movie_bloc_event.dart';
+import 'package:blocwitmvvm/bloc/movie_bloc/movie_bloc_event.dart';
 import 'package:blocwitmvvm/config/model/movie/movie.dart';
 import 'package:blocwitmvvm/data/response/api_rsponse.dart';
 import 'package:blocwitmvvm/repository/movies/movies_repo.dart';

@@ -1,4 +1,4 @@
-import 'package:blocwitmvvm/bloc/movie_bloc/bloc/movie_bloc_bloc.dart';
+import 'package:blocwitmvvm/bloc/movie_bloc/movie_bloc_bloc.dart';
 import 'package:blocwitmvvm/config/routes/routeName.dart';
 import 'package:blocwitmvvm/dependency_injection/locator.dart';
 
@@ -7,7 +7,7 @@ import 'package:blocwitmvvm/utils/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../bloc/movie_bloc/bloc/movie_bloc_event.dart';
+import '../../bloc/movie_bloc/movie_bloc_event.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
